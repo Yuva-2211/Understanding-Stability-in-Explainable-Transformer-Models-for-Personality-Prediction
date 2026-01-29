@@ -1,0 +1,2 @@
+# Understanding-Stability-in-Explainable-Transformer-Models-for-Personality-Prediction
+Explainable and Stable Personality Prediction from Text Implementation of a transformer-based framework for Big Five personality trait prediction from conversational text, emphasizing explainability, robustness, and stability analysis using SHAP and perturbation-based evaluation, as described in the accompanying research paper.
