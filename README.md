@@ -108,7 +108,6 @@ Takshashila University, Tamil Nadu, India
 ## License
 
 This repository is released for academic and research use.
-A suitable open-source license (e.g., MIT or Apache 2.0) may be added upon publication.
 
 
 ---
