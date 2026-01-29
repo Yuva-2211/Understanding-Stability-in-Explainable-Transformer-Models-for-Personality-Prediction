@@ -1,0 +1,5 @@
+Metric,Value,Target,Status
+Neuroticism MAE,0.1390,<0.16,correct
+Contextual Stability ρ,0.968,>0.8,correct
+Sentence Shuffle ρ,1.000,>0.75,correct
+LIWC Alignment,80%,>70%,correct
