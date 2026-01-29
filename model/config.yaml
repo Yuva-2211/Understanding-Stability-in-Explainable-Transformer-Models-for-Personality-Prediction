@@ -1,0 +1,104 @@
+
+# Configuration file for
+# Explainable and Stable Personality Prediction from Text
+
+
+experiment:
+  name: personality_prediction_stability
+  seed: 42
+  device: cuda            # options: cuda / cpu
+  save_dir: results/
+
+
+# Dataset configuration
+
+dataset:
+  name: reddit_personality
+  train_path: data/train_set.csv
+  val_path: data/val_set.csv
+  test_path: data/test_set.csv
+
+  text_column: text
+  label_columns:
+    - agreeableness
+    - openness
+    - conscientiousness
+    - extraversion
+    - neuroticism
+
+  max_seq_length: 128
+  lowercase: true
+  remove_short_texts: true
+  min_text_length: 10
+
+  split_ratio:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+
+
+# Model configuration
+
+  architecture: bert_multi_output_regression
+  pretrained_model: bert-base-uncased
+  hidden_size: 768
+  output_dim: 5
+  dropout: 0.1
+
+
+# Training configuration
+
+training:
+  epochs: 5
+  batch_size: 8
+  learning_rate: 2.0e-5
+  optimizer: adamw
+  loss_function: smooth_l1
+  gradient_clipping: 1.0
+  weight_decay: 0.01
+
+  validation:
+    enabled: true
+    metric: mae
+    monitor_trait: neuroticism
+    save_best_model: true
+
+
+# Explainability (SHAP) configuration
+
+explainability:
+  method: shap
+  target_trait: neuroticism
+  num_samples: 20
+  max_display_tokens: 15
+  tokenizer_max_length: 128
+
+
+# Stability / Robustness evaluation
+
+stability:
+  enabled: true
+
+  contextual_perturbation:
+    method: synonym_replacement
+    samples: 30
+    target_score: 0.8
+
+  structural_perturbation:
+    method: sentence_shuffle
+    shuffle_ratio: 0.5
+    samples: 30
+    target_score: 0.75
+
+
+# Output configuration
+
+outputs:
+  save_model: true
+  model_path: results/bert_final.pt
+
+  save_figures: true
+  figures_dir: results/figures/
+
+  save_tables: true
+  tables_dir: results/tables/
