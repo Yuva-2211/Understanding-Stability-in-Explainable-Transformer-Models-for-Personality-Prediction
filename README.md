@@ -45,11 +45,6 @@ The study demonstrates that stable personality predictions emerge from **distrib
 
 Here is the raw Markdown code for your README.md. You can copy and paste this directly into your file.
 
-Markdown
-# Project Name
-
-A brief description of your project and what it aims to achieve.
-
 ---
 
 ##  Getting Started
